@@ -11,13 +11,10 @@
 			const fileReader = new FileReader();
 			fileReader.onload = () => {
 				const text = fileReader.result as string;
-				console.log(text);
 				const json = JSON.parse(text);
-				console.log(json);
 				const keys = Object.keys(json);
 				const last = keys[keys.length - 1];
 				const parsedMessages = JSON.parse(last) as JSONMessage[];
-				console.log(parsedMessages);
 				const relevantMessages = parsedMessages.slice(2, parsedMessages.length - 2);
 				messages = relevantMessages.map((m, i) => {
 					return {
