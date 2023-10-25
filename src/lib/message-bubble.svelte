@@ -3,7 +3,7 @@
 
 	export let message: Message;
 	$: isAdmin = message.author === 'Admin' || message.author === 'Moderator';
-	$: author = isAdmin ? message.author : message.author.substring(24).replaceAll('_', ' ');
+	$: author = isAdmin ? message.author : message.author.substring(25).replaceAll('_', ' ');
 </script>
 
 <div class="flex flex-col" class:items-end={isAdmin}>
