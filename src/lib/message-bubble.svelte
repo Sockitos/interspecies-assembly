@@ -2,8 +2,8 @@
 	import type { Message } from './types';
 
 	export let message: Message;
-	$: author = message.author.substring(24).replaceAll('_', ' ');
 	$: isAdmin = message.author === 'Admin' || message.author === 'Moderator';
+	$: author = isAdmin ? message.author : message.author.substring(24).replaceAll('_', ' ');
 </script>
 
 <div class="flex flex-col" class:items-end={isAdmin}>
