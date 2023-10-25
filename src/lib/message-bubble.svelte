@@ -2,14 +2,14 @@
 	import type { Message } from './types';
 
 	export let message: Message;
-	$: console.log(message);
+	$: author = message.author.substring(24).replaceAll('_', ' ');
 	$: isAdmin = message.author === 'Admin' || message.author === 'Moderator';
 </script>
 
 <div class="flex flex-col" class:items-end={isAdmin}>
 	{#if !isAdmin}
 		<p class="text-sm mb-2 ml-[5.5rem]">
-			{message.author.substring(24).replaceAll('_', ' ')}
+			{author}
 		</p>
 	{/if}
 	<div class="flex flex-row gap-x-6" class:flex-row-reverse={isAdmin}>
@@ -18,7 +18,7 @@
 			class:bg-[#00ACF2]={!isAdmin}
 			class:bg-[#009F00]={isAdmin}
 		>
-			{message.author[0].toUpperCase()}
+			{author[0].toUpperCase()}
 		</div>
 		<p
 			class="flex-1 px-6 py-4 max-w-2xl text-white whitespace-pre-wrap rounded-xl"
