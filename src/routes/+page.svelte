@@ -19,7 +19,7 @@
 				messages = relevantMessages.map((m, i) => {
 					return {
 						id: i,
-						author: m.name || '',
+						author: m.name ?? 'Moderator',
 						text: m.content
 					};
 				});
